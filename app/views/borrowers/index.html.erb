@@ -1,0 +1,32 @@
+<div class="col-md-offset-1">
+<div class"row">
+  <div class="col-md-13">
+    <h1>Borrower Database</h1>
+      <h2><%= link_to "Add a New Loan", "/borrowers/new", "class" => 'btn btn-primary btn-primary' %> <%= link_to "Add a New Individual", "/persons/new", "class" => 'btn btn-primary btn-primary' %></h2>
+      <hr>
+      <% all_people = Person.read %>
+  </div>
+</div>
+
+
+
+
+
+  <% all_people.each do |person| %>
+
+    <% loans = Borrower.where("person_id" => person["id"]) %>
+    <% totaldebt = 0 %>
+
+      <% loans.each do |loan| %>
+        <% totaldebt = totaldebt + loan["amount_owed"] %>
+      <% end %>
+  <ul>
+    <li><strong><%= link_to person["name"], "/borrowers/#{person["id"]}" %></strong>  <%= link_to "(Delete)", "/persons/#{person["id"]}", "method" => "delete" %></li>
+      <ul>
+      <li>Total Amount Outstanding: $<%= totaldebt %></li>
+      </ul>
+  </ul>
+  <% end %>
+</div>
+
+

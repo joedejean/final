@@ -1,0 +1,37 @@
+<div class="col-md-offset-1">
+<div class="page-header">
+  <h1>Add a New Loan</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+
+
+    <%= form_tag "/borrowers", "method" => "post"  %>
+
+      <div class="form-group">
+        <%= label_tag "chosen_person_id", "Choose a Person:" %>
+        <%= select_tag "chosen_person_id",
+                       options_from_collection_for_select(Person.read.order("name"),
+                        "id", "name"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "chosen_expense_id", "Choose an Expense:" %>
+        <%= select_tag "chosen_expense_id",
+                       options_from_collection_for_select(Expense.read.order("title"),
+                        "id", "title"), "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "amount_owed", "Total $ Amount Owed (Round to Nearest Dollar):" %>
+        <%= text_field_tag "amount_owed", "", "class" => "form-control" %>
+      </div>
+
+    <%= submit_tag "Add This Loan", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/borrowers" %>
+
+    </form>
+</div>
+</div>
+</div>
+</div>

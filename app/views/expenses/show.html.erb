@@ -1,0 +1,30 @@
+<% expense_id = params["id"] %>
+<% expense = Expense.read(expense_id) %>
+
+<div class"row">
+  <div class="col-md-12">
+    <h1><%= expense["title"] %></h1>
+    <hr>
+  </div>
+</div>
+
+    <div class="col-md-12">
+      <h4>Date: <%= expense["date"] %></h4>
+      <h4> Notes: <%= expense["notes"] %> </h4>
+      <h4><u>Borrowers:</u></h4>
+
+        <% borrowers = Borrower.where("expense_id" => expense["id"]) %>
+
+          <ul>
+            <% borrowers.each do |borrower| %>
+              <% person = Person.find_by("id" => borrower["person_id"]) %>
+                <li>
+                <%= person["name"] %>
+                owes $
+                <%= borrower["amount_owed"] %> <%= link_to "(Delete)", "/borrowers/#{borrower["id"]}", "method" => "delete" %>
+                </li>
+            <% end %>
+          </ul>
+    </div>
+
+

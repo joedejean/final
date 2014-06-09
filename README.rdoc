@@ -1,0 +1,12 @@
+
+My project idea is a way to track expenses that I have which other people owe me for.  I can enter expenses and track the borrowers behind them.
+
+In terms of the requirement list, I believe I have addressed the following:
+
+* Implement at least one many-to-many association
+* Implement at least three models
+* Demonstrate best-practice use of Rails MVC architecture
+* Populate the database via seed data
+* Use at least three validation rules
+* Proper use of a CSS framework like Bootstrap or Foundation (grid usage, form elements, or other components)
+

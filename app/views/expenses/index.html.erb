@@ -1,0 +1,31 @@
+<div class="col-md-offset-1">
+<div class"row">
+  <div class="col-md-13">
+    <h1>Expense Database</h1>
+      <h2><%= link_to "Add a New Expense", "/expenses/new", "class" => 'btn btn-primary btn-primary' %> </h2>
+      <hr>
+      <% all_expenses = Expense.read %>
+  </div>
+</div>
+
+<br>
+
+<ul>
+
+  <% all_expenses.each do |expense| %>
+    <% totalloanamount = 0 %>
+    <% loans = Borrower.where("expense_id" => expense["id"]) %>
+       <% loans.each do |loan| %>
+          <% totalloanamount = totalloanamount + loan["amount_owed"] %>
+       <% end %>
+
+    <li><strong><%= link_to expense["title"], "/expenses/#{expense["id"]}" %></strong> <%= link_to "(Delete)", "/expenses/#{expense["id"]}", "method" => "delete" %></li>
+      <ul>
+      <li>Amount: $<%= expense.totalamount %> ($<%= totalloanamount %> outstanding from borrowers in database)</li>
+      <li>Date: <%= expense.date %></li>
+      <li>Notes: <%= expense.notes %> </li>
+      </ul>
+  <% end %>
+
+</ul>
+

@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paymeback</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="col-md-offset-1">
+  <div class="row">
+     <div class="col-md-10">
+       <%= link_to "Expenses", "/expenses", "class" => "item-link"  %> |
+       <%= link_to "Borrowers", "/borrowers" %>
+      </div>
+  </div>
+</div>
+<%= yield %>
+
+</body>
+</html>
